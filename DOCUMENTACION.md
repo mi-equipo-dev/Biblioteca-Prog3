@@ -2,7 +2,7 @@ primer creamos las migraciones con sus respectivos modelos de:
 las que no tienen FK:
 roles, php artisan make:model Rol -m
 categorias, php artisan make:model Categoria -m
-procedencias, 
+procedencias, php artisan make:model Procedencia -m
 destinos. 
 utilizando el comando
 php artisan make:model Rol -m
