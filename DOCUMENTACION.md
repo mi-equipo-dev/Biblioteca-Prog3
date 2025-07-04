@@ -1,4 +1,4 @@
-primer creamos las migraciones con sus respectivos modelos de:
+Primero creamos las migraciones con sus respectivos modelos de:
 las que no tienen FK:
 roles, php artisan make:model Rol -m
 categorias, php artisan make:model Categoria -m
@@ -11,3 +11,6 @@ Schema::create('roles', function (Blueprint $table) {
     $table->id('id_rol');
     $table->string('rol');
 });
+
+Ahora creamos la migracion y modelo de la tabla LIBROS que tiene las foreignkeys de las tablas CATEGORIAS, PROCEDENCIAS Y DESTINOS.
+
