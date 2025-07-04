@@ -3,7 +3,7 @@ las que no tienen FK:
 roles, php artisan make:model Rol -m
 categorias, php artisan make:model Categoria -m
 procedencias, php artisan make:model Procedencia -m
-destinos. 
+destinos. php artisan make:model Destino -m 
 utilizando el comando
 php artisan make:model Rol -m
 Agregamos los campos rol en la migracion de la tabla ROLS (no contamos con que nos iba a salir asi el plural automatico)
