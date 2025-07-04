@@ -12,5 +12,5 @@ Schema::create('roles', function (Blueprint $table) {
     $table->string('rol');
 });
 
-Ahora creamos la migracion y modelo de la tabla LIBROS que tiene las foreignkeys de las tablas CATEGORIAS, PROCEDENCIAS Y DESTINOS.
+Ahora creamos la migracion y modelo de la tabla LIBROS que tiene las foreignkeys de las tablas CATEGORIAS, PROCEDENCIAS Y DESTINOS. Y le agregamos las columnas necesarias a la migracion.
 
