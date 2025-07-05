@@ -31,7 +31,7 @@ class RolController extends Controller
     {
         //Validamos que los campos que necesitamos estén presentes y sean cortos
         $validated = $request->validate([
-            "rol"=>"required|max:100"
+            "rol"=>"required|min:1|max:100" //min 1 para no recibir string vacío
         ]);
 
         $rol = Rol::create($validated);

@@ -50,4 +50,8 @@ En el método store() de RolController se configuró el código para crear un nu
 Se configuró el método create() de RolController para preparar lo que va usar la vista blade. 
 También, configuramos el método show() de RolController para buscar un rol en específico por la ID.
 Configurado los métodos update() y delete() que son internos del sistema.
-Todos tienen su ruta de acceso, es decir la conexión entre la ruta web que mostrará la mista y un método del CRUD en el controlador.
+Todos tienen su ruta de acceso, es decir la conexión entre la ruta web que mostrará la vista y un método del CRUD en el controlador.
+
+En el modelo Usuario, Para resolver si el usuario es un bibliotecario se creó un campo tipo appends (datos que se deducen de otros datos ya alamacenados).
+
+Especificamos en los argumentos de los modelos cuál es la columna que los une porque en la base de datos se entiende, pero al usar appends no está del todo claro para Laravel.

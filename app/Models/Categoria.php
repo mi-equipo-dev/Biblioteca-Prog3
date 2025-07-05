@@ -8,6 +8,6 @@ class Categoria extends Model
 {
     public function libros()
     {
-        return $this->hasMany(Libro::class);// Relacion uno a muchos entre categorias y libros (una categoria puede tener muchos libros)
+        return $this->hasMany(Libro::class,'id_categoria');// Relacion uno a muchos entre categorias y libros (una categoria puede tener muchos libros)
     }
 }
