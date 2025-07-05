@@ -17,3 +17,15 @@ Ahora creamos la migración y modelo de la tabla LIBROS que tiene las foreignkey
 Ahora creamos la migración y el modelo de la tabla USUARIOS que tiene la foreignkey de la tabla ROLS. Y le agregamos las columnas necesarias a la migración.
 
 Ahora creamos la migración y el modelo de la tabla PRESTAMOS que tiene la foreignkey de la tabla USUARIOS y la tabla LIBROS. Y le agregamos las columnas necesarias a la migración.
+
+Finalizamos la creacion y carga de las migraciones.
+
+Realizamos las conexiones entre los modelos.
+Relacion uno a muchos entre ROLES y USUARIOS.
+Relacion uno a muchos entre CATEGORIAS y LIBROS.
+Relacion uno a muchos entre PPROCEDENCIAS y LIBROS.
+Relacion uno a muchos entre DESTINOS y LIBROS.
+Relacion uno a muchos entre PRESTAMOS y LIBROS.
+Relacion uno a muchos entre PRESTAMOS y USUARIOS.
+
+
