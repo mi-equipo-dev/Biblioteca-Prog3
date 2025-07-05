@@ -53,7 +53,10 @@ class RolController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Buscamos el rol solicitado
+        $rol = Rol::findOrFail($id);
+        //Retornamos la vista de edición enviandole el rol que se está editando
+        return view("roles.edit",compact("rol"));
     }
 
     /**
@@ -61,7 +64,17 @@ class RolController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        ///Validaciones
+        //El rol a modificar debe existir
+        $rol = Rol::findOrFail($id);
+        //El rol debe estar presente
+        $validated = $request->validate([
+            "rol"=>"required|max:100"
+        ]);
+        //Actualizamos el rol en la base de datos
+        $rol->update($validated);
+        //Retornamos a la vista de todos los elementos y agregamos un success que puede informar sobre lo ocurrido
+        return redirect()->route('roles.index')->with('success', 'Rol actualizado correctamente.');
     }
 
     /**
@@ -70,5 +83,8 @@ class RolController extends Controller
     public function destroy(string $id)
     {
         //
+        $rol = Rol::findOrFail($id);
+        $rol->delete();
+        return redirect()->route('roles.index')->with('success', 'Rol eliminado correctamente.');
     }
 }

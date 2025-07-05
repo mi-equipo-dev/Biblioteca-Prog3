@@ -50,4 +50,4 @@ En el método store() de RolController se configuró el código para crear un nu
 Se configuró el método create() de RolController para preparar lo que va usar la vista blade. 
 También, configuramos el método show() de RolController para buscar un rol en específico por la ID.
 Configurado los métodos update() y delete() que son internos del sistema.
-Todos tienen su ruta de acceso.
+Todos tienen su ruta de acceso, es decir la conexión entre la ruta web que mostrará la mista y un método del CRUD en el controlador.
