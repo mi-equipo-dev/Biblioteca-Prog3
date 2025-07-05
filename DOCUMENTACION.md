@@ -28,4 +28,11 @@ Relacion uno a muchos entre DESTINOS y LIBROS.
 Relacion uno a muchos entre PRESTAMOS y LIBROS.
 Relacion uno a muchos entre PRESTAMOS y USUARIOS.
 
-
+Generamos los controladores de todas las tablas utilizando estos comandos que nos generan el CRUD necesario para gestionar los modelos.
+php artisan make:controller RolController --resource
+php artisan make:controller CategoriaController --resource
+php artisan make:controller ProcedenciaController --resource
+php artisan make:controller DestinoController --resource
+php artisan make:controller LibroController --resource
+php artisan make:controller UsuarioController --resource
+php artisan make:controller PrestamoController --resource
