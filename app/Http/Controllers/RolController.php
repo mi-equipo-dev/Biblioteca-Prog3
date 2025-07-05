@@ -21,7 +21,7 @@ class RolController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
@@ -29,7 +29,13 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validamos que los campos que necesitamos estén presentes y sean cortos
+        $validated = $request->validate([
+            "rol"=>"required|max:100"
+        ]);
+
+        $rol = Rol::create($validated);
+        return redirect()->route('roles.index')->with('success', 'Rol creado correctamente.');
     }
 
     /**
@@ -37,7 +43,9 @@ class RolController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //permite buscar un rol en específico por la ID
+        $rol = Rol::findOrFail($id);
+        return view("roles.show",compact("rol"));
     }
 
     /**

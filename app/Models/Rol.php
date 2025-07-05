@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rol extends Model
 {
+    protected $fillable = ['rol'];
    public function usuarios()
    {
        return $this->hasMany(Usuario::class);// Relacion uno a muchos entre roles y usuarios(un rol puede tener muchos usuarios)

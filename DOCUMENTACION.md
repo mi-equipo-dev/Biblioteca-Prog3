@@ -45,4 +45,7 @@ Abrí tu terminal en la raíz del proyecto.
 Ejecutá este comando:
     php artisan key:generate
 
-Configuramos el método index() de RolController para obtener todos los roles desde la base de datos (Está vacío todvía) y los pusimos en una vista sencilla para porbar.
+Configuramos el método index() de RolController para obtener todos los roles desde la base de datos (Está vacío todvía) y los pusimos en una vista sencilla para probar.
+En el método store() de RolController se configuró el código para crear un nuevo rol. En el modelo de Rol vamos a configruar el $fillable.
+Se configuró el método create() de RolController para preparar lo que va usar la vista blade. 
+También, configuramos el método show() de RolController para buscar un rol en específico por la ID.
