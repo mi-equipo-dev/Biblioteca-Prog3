@@ -19,6 +19,9 @@ Ahora creamos la migración y el modelo de la tabla USUARIOS que tiene la foreig
 Ahora creamos la migración y el modelo de la tabla PRESTAMOS que tiene la foreignkey de la tabla USUARIOS y la tabla LIBROS. Y le agregamos las columnas necesarias a la migración.
 
 Finalizamos la creacion y carga de las migraciones.
+NOTA: Abrí tu terminal en la raíz del proyecto.
+Para correr las migraciones. Ejecutá este comando:
+    php artisan migrate
 
 Realizamos las conexiones entre los modelos.
 Relacion uno a muchos entre ROLES y USUARIOS.
@@ -36,3 +39,10 @@ php artisan make:controller DestinoController --resource
 php artisan make:controller LibroController --resource
 php artisan make:controller UsuarioController --resource
 php artisan make:controller PrestamoController --resource
+
+NOTA: "No application encryption key has been specified." Ese error aparece porque Laravel no tiene una clave de encriptación (APP_KEY) configurada en tu archivo .env
+Abrí tu terminal en la raíz del proyecto.
+Ejecutá este comando:
+    php artisan key:generate
+
+Configuramos el método index() de RolController para obtener todos los roles desde la base de datos (Está vacío todvía) y los pusimos en una vista sencilla para porbar.

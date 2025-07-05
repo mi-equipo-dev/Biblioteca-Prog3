@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;//importamos la clase del namespace
 use Illuminate\Http\Request;
 
 class RolController extends Controller
@@ -11,7 +12,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Rol::all(); // Obtiene todos los roles de la tabla roles
+        return view('roles.index', compact('roles')); // Retorna la vista con los roles
     }
 
     /**
