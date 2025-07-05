@@ -49,3 +49,5 @@ Configuramos el método index() de RolController para obtener todos los roles de
 En el método store() de RolController se configuró el código para crear un nuevo rol. En el modelo de Rol vamos a configruar el $fillable.
 Se configuró el método create() de RolController para preparar lo que va usar la vista blade. 
 También, configuramos el método show() de RolController para buscar un rol en específico por la ID.
+Configurado los métodos update() y delete() que son internos del sistema.
+Todos tienen su ruta de acceso.
