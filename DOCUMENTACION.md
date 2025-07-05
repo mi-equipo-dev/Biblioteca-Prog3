@@ -55,3 +55,12 @@ Todos tienen su ruta de acceso, es decir la conexión entre la ruta web que most
 En el modelo Usuario, Para resolver si el usuario es un bibliotecario se creó un campo tipo appends (datos que se deducen de otros datos ya alamacenados).
 
 Especificamos en los argumentos de los modelos cuál es la columna que los une porque en la base de datos se entiende, pero al usar appends no está del todo claro para Laravel.
+
+Implementación de controladores completos para Categorías, Procedencias, Destinos y Libros
+
+Agregados controladores: CategoriaController, ProcedenciaController, DestinoController y LibroController
+CRUD completo para cada entidad: index, create, store, show, edit, update y destroy
+Validaciones de datos en store y update
+Relación entre modelos mediante Eloquent (belongsTo y hasMany)
+Migración y modelo de libros con claves foráneas a categorías, procedencias y destinos
+Preparado para integración con vistas Blade

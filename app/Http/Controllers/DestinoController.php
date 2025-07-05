@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destino;//importamos la clase del namespace
 use Illuminate\Http\Request;
 
 class DestinoController extends Controller
@@ -11,7 +12,9 @@ class DestinoController extends Controller
      */
     public function index()
     {
-        //
+        $destinos = Destino::all(); // Obtiene todos los destinos de la tabla destinos
+        // Retorna la vista con los destinos
+        return view('destinos.index', compact('destinos'));
     }
 
     /**
@@ -19,7 +22,7 @@ class DestinoController extends Controller
      */
     public function create()
     {
-        //
+        return view('destinos.create');
     }
 
     /**
@@ -27,7 +30,12 @@ class DestinoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+           "destino" => "required|string|min:1|max:100"// min 1 para no recibir string vacío
+        ]);
+
+        $destino = Destino::create($validated);
+        return redirect()->route('destinos.index')->with('success', 'Destino creado correctamente.');
     }
 
     /**
@@ -35,7 +43,8 @@ class DestinoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $destino = Destino::findOrFail($id);
+        return view('destinos.show', compact('destino'));
     }
 
     /**
@@ -43,7 +52,8 @@ class DestinoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $destino = Destino::findOrFail($id);
+        return view('destinos.edit', compact('destino'));
     }
 
     /**
@@ -51,7 +61,14 @@ class DestinoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $destino = Destino::findOrFail($id);
+        $validated = $request->validate([
+            "destino" => "required|max:100"
+        ]);
+        // Actualizamos el destino en la base de datos
+        $destino->update($validated);
+        // Retornamos a la vista de todos los elementos y agregamos un success que puede informar sobre lo ocurrido
+        return redirect()->route('destinos.index')->with('success', 'Destino actualizado correctamente.');
     }
 
     /**
@@ -59,6 +76,8 @@ class DestinoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $destino = Destino::findOrFail($id);
+        $destino->delete();
+        return redirect()->route('destinos.index')->with('success','Destino eliminado correctamente.');
     }
 }
