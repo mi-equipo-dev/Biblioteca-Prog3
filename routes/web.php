@@ -9,6 +9,8 @@ use App\Http\Controllers\DestinoController;
 
 use Illuminate\Support\Facades\Route;
 
+include('auth_routes.php');
+
 Route::get('/', function () {
     return view('welcome');
 });

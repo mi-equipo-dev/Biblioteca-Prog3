@@ -72,3 +72,14 @@ public function buscarPorCuil(Request $request)
 Se agregan las rutas necesarias en web.php para todos los recursos creados anteriormente.
 
 
+Tuvimos que instalar Sanctum en la raíz del proyecto para utilizar Registro, Login y Autenticación en Laravel.
+Ustedes que hacen pull solo ejecuten la migración.
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
+
+En el modelo Usuario cambiamos la herencia, ahora Usuario no extiende de Model sino de Authenticatable por lo que tuvimos que importar la clase use Illuminate\Foundation\Auth\User as Authenticatable;
+También cambiamos la configuración de auth.php para indicar que el modelo de autenciación es Usuario (y no Users que es por defecto)
+Ahora completamos el $fillable dentro de Usuario.
+
+Ahora se puede iniciar sesión en /login

@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    // Usá esta función para que Laravel sepa qué campo usar para validar contraseñas
+    public function getAuthPassword()
+    {
+        return $this->contrasenia;
+    }
 }
