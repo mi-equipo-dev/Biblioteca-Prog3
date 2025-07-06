@@ -32,4 +32,13 @@ class AuthController extends Controller
 
         return redirect()->route('welcome');
     }
+
+    public function Logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('loginForm');
+    }
 }

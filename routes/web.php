@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Route;
 include('auth_routes.php');
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('presentacion.equipo');
+})->name('welcome');
 
 // Rutas para ROLES
 Route::get('/roles', [RolController::class, 'index'])->name('roles.index');

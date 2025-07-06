@@ -36,10 +36,30 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <nav class="bg-blue-600 text-white p-4">
-        <div class="max-w-6xl mx-auto">
-            <span class="font-bold">Sistema Biblioteca</span>
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="font-bold">BIBLIOTECH</span>
+            <span class="font-bold">🐱‍🐉</span>
         </div>
-    </nav>
+        <div>
+            @auth
+            <form action="{{ route('logout') }}" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                    Cerrar sesión
+                </button>
+            </form>
+            @endauth
+
+            @guest
+            <a href="{{ route('login') }}" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                Iniciar sesión
+            </a>
+            @endguest
+        </div>
+    </div>
+</nav>
+
 
     <main class="flex-grow py-6 px-4">
         @yield('content')
