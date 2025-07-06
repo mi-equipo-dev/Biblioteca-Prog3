@@ -83,3 +83,6 @@ También cambiamos la configuración de auth.php para indicar que el modelo de a
 Ahora completamos el $fillable dentro de Usuario.
 
 Ahora se puede iniciar sesión en /login
+
+NOTA: ejecutar composer install para correr las dependencias faltantes porque tuvimos que instalar livewire en el proyecto Laravel, un paquete para crear componentes interactivos en el frontend:
+    composer require livewire/livewire
