@@ -20,37 +20,37 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
                 <label class="block text-sm font-medium">Nombre</label>
-                <input type="text" name="nombre" class="w-full border-gray-300 rounded p-2" required>
+                <input type="text" name="nombre" class="w-full border border-gray-300 rounded p-2" required>
             </div>
 
             <div>
                 <label class="block text-sm font-medium">Apellido</label>
-                <input type="text" name="apellido" class="w-full border-gray-300 rounded p-2" required>
+                <input type="text" name="apellido" class="w-full border border-gray-300 rounded p-2" required>
             </div>
 
             <div>
                 <label class="block text-sm font-medium">CUIL</label>
-                <input type="text" name="CUIL" class="w-full border-gray-300 rounded p-2" required>
+                <input type="text" name="CUIL" class="w-full border border-gray-300 rounded p-2" required>
             </div>
 
             <div>
                 <label class="block text-sm font-medium">Domicilio</label>
-                <input type="text" name="domicilio" class="w-full border-gray-300 rounded p-2">
+                <input type="text" name="domicilio" class="w-full border border-gray-300 rounded p-2">
             </div>
 
             <div>
                 <label class="block text-sm font-medium">Teléfono</label>
-                <input type="text" name="telefono" class="w-full border-gray-300 rounded p-2">
+                <input type="text" name="telefono" class="w-full border border-gray-300 rounded p-2">
             </div>
 
             <div>
                 <label class="block text-sm font-medium">Email</label>
-                <input type="email" name="email" class="w-full border-gray-300 rounded p-2" required>
+                <input type="email" name="email" class="w-full border border-gray-300 rounded p-2" required>
             </div>
 
             <div>
                 <label class="block text-sm font-medium">Contraseña</label>
-                <input type="password" name="contrasenia" class="w-full border-gray-300 rounded p-2" required>
+                <input type="password" name="contrasenia" class="w-full border border-gray-300 rounded p-2" required>
             </div>
 
             <div>
