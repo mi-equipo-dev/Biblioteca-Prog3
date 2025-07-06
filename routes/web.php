@@ -46,8 +46,9 @@ Route::resource('prestamos', PrestamoController::class);
 // Búsqueda por CUIL (extra)
 Route::get('prestamos/buscar-cuil', [PrestamoController::class, 'buscarPorCuil'])->name('prestamos.buscarCuil');
 
-
-
+Route::get('/equipo', function () {
+    return view('presentacion.equipo');
+});
 
 
 
