@@ -24,6 +24,9 @@ Route::get("/roles/{id}/editar",[RolController::class,'edit'])->name('roles.edit
 Route::put("/roles/{id}",[RolController::class,'update'])->name('roles.update');
 Route::delete("/roles/{id}",[RolController::class,'delete'])->name('roles.delete');
 Route::resource('usuarios', UsuarioController::class); //añadido front
+Route::get('/bibliotecario/crear', function () {
+    return view('usuarios.create');
+});
 
 // Rutas para CATEGORÍAS
 Route::resource('categorias', CategoriaController::class);

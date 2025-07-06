@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    @livewireStyles
     <meta charset="UTF-8">
     <title>Bibliotech</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,5 +22,6 @@
             &copy; {{ date('Y') }} Bibliotech. Todos los derechos reservados.
         </div>
     </footer>
+    @livewireScripts
 </body>
 </html>
