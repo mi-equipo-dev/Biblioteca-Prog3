@@ -8,7 +8,6 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DestinoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
-
 include('auth_routes.php');
 
 Route::get('/', function () {
@@ -27,6 +26,7 @@ Route::resource('usuarios', UsuarioController::class); //añadido front
 Route::get('/bibliotecario/crear', function () {
     return view('usuarios.create');
 });
+
 
 // Rutas para CATEGORÍAS
 Route::resource('categorias', CategoriaController::class);
