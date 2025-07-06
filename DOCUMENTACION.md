@@ -90,3 +90,5 @@ NOTA: ejecutar composer install para correr las dependencias faltantes porque tu
 Agregamos los $fillable faltantes de los demás modelos
 
 Configuramos el CRUD del UsuarioController.
+
+Agregamos y acomodamos las rutas para los controladores.
