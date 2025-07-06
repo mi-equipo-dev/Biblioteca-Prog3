@@ -1,41 +1,51 @@
-<!-- resources/views/login.blade.php -->
+@extends('layouts.app')
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Iniciar Sesión</h1>
+@section('content')
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-center mb-6">Iniciar Sesión</h2>
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+                <ul class="list-disc list-inside text-sm">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-    <form method="POST" action="/login">
-        @csrf <!-- 👈 Token CSRF obligatorio -->
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" name="email" id="email" value="{{ old('email') }}"
+                       class="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       required>
+            </div>
 
-        <div>
-            <label for="contrasenia">Contraseña:</label>
-            <input type="password" name="contrasenia" id="contrasenia" >
-        </div>
-
-        <button type="submit">Ingresar</button>
-    </form>
-    <div style="margin-top:20px; color: orange; font-weight: bold;"></div>
-        Este formulario de login es provisorio y debería ser borrado en producción.
+            <div class="mb-6">
+    <label for="contrasenia" class="block text-sm font-medium text-gray-700">Contraseña</label>
+    <div class="relative">
+        <input type="password" name="contrasenia" id="contrasenia"
+               class="w-full mt-1 p-2 pr-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+               required>
+        <button type="button" onclick="togglePassword()"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-600">
+            👁️
+        </button>
     </div>
-</body>
-</html>
+</div>
+
+
+            <div>
+                <button type="submit"
+                        class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition duration-200">
+                    Iniciar Sesión
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection
