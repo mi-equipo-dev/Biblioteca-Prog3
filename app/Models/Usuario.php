@@ -13,12 +13,17 @@ class Usuario extends Authenticatable
     protected $fillable = ['nombre', 'apellido', 'CUIL', 'domicilio', 'telefono', 'email', 'contrasenia', 'id_rol'];
     protected $hidden = ['contrasenia']; // Oculta en JSON
     protected $appends = [
-        "es_bibliotecario"
+        "es_bibliotecario",
+        "es_administrador"
     ];
      // Atributo virtual: $usuario->es_bibliotecario
     public function getEsBibliotecarioAttribute()
     {
         return $this->rol && strtolower($this->rol->rol) === 'bibliotecario';
+    }
+    public function getEsAdministradorAttribute()
+    {
+        return $this->rol && strtolower($this->rol->rol) === 'administrador';
     }
     public function rol()
     {
