@@ -1,5 +1,7 @@
-<div>
-    <div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded">
+<div class="min-h-screen flex items-center justify-center bg-cover bg-center"
+     style="background-image: url('/images/biblioteca.png');">
+
+    <div class="max-w-md w-full mt-0 p-6 bg-white shadow-md rounded">
         <h2 class="text-2xl font-semibold mb-6 text-center">Iniciar Sesión</h2>
 
         @if (session()->has('error'))
