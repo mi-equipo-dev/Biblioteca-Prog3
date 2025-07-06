@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Libro extends Model
 {
+    protected $fillable = [
+        'ISBN',
+        'titulo',
+        'autor',
+        'editorial',
+        'anio_publicacion',
+        'cantidad',
+        'id_categoria',
+        'id_procedencia',
+        'id_destino',
+    ]; // Atributos que se pueden asignar masivamente
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'id_categoria');// Relacion uno a muchos entre categorias y libros (una categoria puede tener muchos libros)

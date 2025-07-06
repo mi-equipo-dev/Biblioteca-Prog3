@@ -52,6 +52,7 @@ class PrestamoController extends Controller
      */
     public function show(string $id)
     {
+        $prestamo = Prestamo::with(['libro', 'usuario'])->findOrFail($id);
         return view('prestamos.show', compact('prestamo'));
         // Muestra los detalles de un préstamo específico.
     }
@@ -61,9 +62,9 @@ class PrestamoController extends Controller
      */
     public function edit(string $id)
     {
-        $usuario = Usuario::all();
-        $libro = Libro::all();
-        return view('prestamos.edit', compact( 'prestamo','usuarios', 'libros')); //(((()))????¡¡¡¡¡)
+        $prestamo = Prestamo::with(['libro', 'usuario'])
+            ->findOrFail($id);
+        return view('prestamos.edit', compact('prestamo'));
         // Muestra un formulario para editar un préstamo específico, obteniendo los datos del usuario y libro relacionados.
     }
 
@@ -74,7 +75,7 @@ class PrestamoController extends Controller
     {
         $request->validate([
             'fecha_prestamo' => 'required|date',
-            'fecha_devolucion' => 'nullable|date|after:fecha_prestamo',
+            'fecha_devolucion' => 'nullable|date|after:fecha_prestamo', // Asegura que la fecha de devolución sea posterior a la fecha de préstamo.
             'id_libro' => 'required|exists:libros,id',
             'id_usuario' => 'required|exists:usuarios,id',
         ]);
@@ -93,24 +94,26 @@ class PrestamoController extends Controller
     public function destroy(string $id)
     {
         $prestamo = Prestamo::findOrFail($id);
-        $prestamo->delete();
+        $prestamo->delete(); // Eliminación física del préstamo de la base de datos.
         return redirect()->route('prestamos.index')->with('success', 'Préstamo eliminado exitosamente.');
         // Elimina un préstamo específico de la base de datos.
     }
 
     public function buscarPorCuil(Request $request)
-{
-    $cuil = $request->input('cuil');
+    {
+        $request->validate([
+            'cuil' => 'required', // Validación del CUIL
+        ]);
+        $cuil = $request->input('cuil');
 
-    $usuario = Usuario::where('cuil', $cuil)->first();
+        $usuario = Usuario::where('CUIL', $cuil)->first();
 
-    if (!$usuario) {
-        return redirect()->back()->with('error', 'No se encontró un usuario con ese CUIL.');
+        if (!$usuario) {
+            return redirect()->back()->with('error', 'No se encontró un usuario con ese CUIL.');
+        }
+
+        $prestamos = Prestamo::with(['libro', 'usuario'])->where('id_usuario', operator: $usuario->id)->get();
+
+        return view('prestamos.resultado', compact('usuario', 'prestamos'));
     }
-
-    $prestamos = Prestamo::with('libro')->where('id_usuario', $usuario->id)->get();
-
-    return view('prestamos.resultado', compact('usuario', 'prestamos'));
-}
-
 }
