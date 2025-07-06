@@ -42,11 +42,11 @@ class UsuarioController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'CUIL' => 'required|string|max:20|unique:usuarios,CUIL',
-            'domicilio' => 'nullable|string|max:255',
-            'telefono' => 'nullable|string|max:20',
+            'domicilio' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20',
             'email' => 'required|email|unique:usuarios,email',
             'contrasenia' => 'required|string|min:1',
-            'id_rol' => 'required|exists:roles,id',
+            'id_rol' => 'required|exists:rols,id',
         ]);
 
         $usuario = Usuario::create($validated);
@@ -112,4 +112,6 @@ class UsuarioController extends Controller
         $usuario->delete();
         return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
     }
+   
+
 }
