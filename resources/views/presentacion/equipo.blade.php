@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="max-w-6xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
-    <h2 class="text-3xl font-bold text-center mb-8">Presentación del Equipo</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">PRESENTACIÓN DE EQUIPO-DEV</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- SANTI -->
         <div class="flip-card">
             <div class="flip-inner relative min-h-[280px]">
                 <div class="flip-front absolute inset-0 bg-blue-100 p-6 rounded-lg shadow flex flex-col items-center text-center">
-                    <img src="/images/michi.png" alt="Santi" class="w-20 h-20 rounded-full mb-2">
+                    <img src="/images/santi.png" alt="Santi" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Santi</h3>
                     <p class="text-sm text-gray-700">Omil Santiago Hernán</p>
                 </div>
@@ -24,7 +24,7 @@
         <div class="flip-card">
             <div class="flip-inner relative min-h-[280px]">
                 <div class="flip-front absolute inset-0 bg-green-100 p-6 rounded-lg shadow flex flex-col items-center text-center">
-                    <img src="/images/michi.png" alt="Fabri" class="w-20 h-20 rounded-full mb-2">
+                    <img src="/images/fabri.png" alt="Fabri" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Fabri</h3>
                     <p class="text-sm text-gray-700">Nuñez Fabricio Lautaro</p>
                 </div>
@@ -39,7 +39,7 @@
         <div class="flip-card">
             <div class="flip-inner relative min-h-[280px]">
                 <div class="flip-front absolute inset-0 bg-pink-100 p-6 rounded-lg shadow flex flex-col items-center text-center">
-                    <img src="/images/michi.png" alt="Mayra" class="w-20 h-20 rounded-full mb-2">
+                    <img src="/images/mayra.png" alt="Mayra" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Mayra</h3>
                     <p class="text-sm text-gray-700">Mendoza Mayra Nahir</p>
                 </div>
@@ -54,7 +54,7 @@
         <div class="flip-card">
             <div class="flip-inner relative min-h-[280px]">
                 <div class="flip-front absolute inset-0 bg-yellow-100 p-6 rounded-lg shadow flex flex-col items-center text-center">
-                    <img src="/images/michi.png" alt="Olga" class="w-20 h-20 rounded-full mb-2">
+                    <img src="/images/olga.png" alt="Olga" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Olga</h3>
                     <p class="text-sm text-gray-700">Gonzalez Olga Mercedes</p>
                 </div>
