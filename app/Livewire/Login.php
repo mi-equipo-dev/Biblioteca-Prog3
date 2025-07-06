@@ -14,7 +14,7 @@ class Login extends Component
     {
         $this->validate([
             'email' => 'required|email',
-            'contrasenia' => 'required|min:6',
+            'contrasenia' => 'required|min:5',
         ]);
 
         if (!Auth::attempt(['email' => $this->email, 'password' => $this->contrasenia])) {
