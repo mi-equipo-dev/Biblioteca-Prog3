@@ -56,11 +56,19 @@ En el modelo Usuario, Para resolver si el usuario es un bibliotecario se creó u
 
 Especificamos en los argumentos de los modelos cuál es la columna que los une porque en la base de datos se entiende, pero al usar appends no está del todo claro para Laravel.
 
-Implementación de controladores completos para Categorías, Procedencias, Destinos y Libros
-
-Agregados controladores: CategoriaController, ProcedenciaController, DestinoController y LibroController
+Implementación de controladores completos para Categorías, Procedencias y Destinos(CategoriaController, ProcedenciaController y DestinoController).
+se realiza:
 CRUD completo para cada entidad: index, create, store, show, edit, update y destroy
 Validaciones de datos en store y update
-Relación entre modelos mediante Eloquent (belongsTo y hasMany)
-Migración y modelo de libros con claves foráneas a categorías, procedencias y destinos
-Preparado para integración con vistas Blade
+
+Implementación de controladores completos para Libros y Prestamos(LibroController y PrestamoController)
+ CRUD completo para cada entidad + ajustes y mejoras generales
+
+En la implementacion del controlador de Préstamos con relaciones a Usuarios y Libros.
+Es agregada la funcion ¨búsqueda¨ de usuario por CUIL en formulario de préstamo.
+public function buscarPorCuil(Request $request)
+
+
+Se agregan las rutas necesarias en web.php para todos los recursos creados anteriormente.
+
+
