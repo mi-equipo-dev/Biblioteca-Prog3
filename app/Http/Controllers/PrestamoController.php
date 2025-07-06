@@ -62,9 +62,11 @@ class PrestamoController extends Controller
      */
     public function edit(string $id)
     {
+        $usuarios = Usuario::all();
+        $libros = Libro::all();
         $prestamo = Prestamo::with(['libro', 'usuario'])
             ->findOrFail($id);
-        return view('prestamos.edit', compact('prestamo'));
+        return view('prestamos.edit', compact('prestamo','usuarios', 'libros'));
         // Muestra un formulario para editar un préstamo específico, obteniendo los datos del usuario y libro relacionados.
     }
 

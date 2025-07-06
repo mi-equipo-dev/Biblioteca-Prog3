@@ -86,3 +86,7 @@ Ahora se puede iniciar sesión en /login
 
 NOTA: ejecutar composer install para correr las dependencias faltantes porque tuvimos que instalar livewire en el proyecto Laravel, un paquete para crear componentes interactivos en el frontend:
     composer require livewire/livewire
+
+Agregamos los $fillable faltantes de los demás modelos
+
+Configuramos el CRUD del UsuarioController.
