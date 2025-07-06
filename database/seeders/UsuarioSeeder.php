@@ -11,6 +11,7 @@ use App\Models\Rol;
 use App\Models\Usuario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
 {
@@ -32,7 +33,7 @@ class UsuarioSeeder extends Seeder
             'domicilio' => 'Calle Falsa 123',
             'telefono' => '1234567890',
             'email' => 'admin@gmail.com',
-            'contrasenia' => 'admin',
+            'contrasenia' => Hash::make('admin'),
             'id_rol' => 1 // Administrador
         ]);
         Usuario::create([
@@ -42,7 +43,7 @@ class UsuarioSeeder extends Seeder
             'domicilio' => 'Avenida Siempre Viva 456',
             'telefono' => '0987654321',
             'email' => 'bibliotecario@gmail.com',
-            'contrasenia' => 'bibliotecario',
+            'contrasenia' => Hash::make('bibliotecario'),
             'id_rol' => 2 // Bibliotecario
         ]);
         Usuario::create([
@@ -52,7 +53,7 @@ class UsuarioSeeder extends Seeder
             'domicilio' => 'Boulevard de los Sueños Rotos 789',
             'telefono' => '1122334455',
             'email' => 'usuario@gmail.com',
-            'contrasenia' => 'usuario',
+            'contrasenia' => Hash::make('usuario'),
             'id_rol' => 3 // Usuario
         ]);
 
