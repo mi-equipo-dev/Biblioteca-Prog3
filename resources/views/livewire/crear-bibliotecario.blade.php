@@ -3,9 +3,9 @@
         <h2 class="text-2xl font-semibold mb-6">Crear Usuario</h2>
 
         @if (session()->has('mensaje'))
-            <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
-                {{ session('mensaje') }}
-            </div>
+        <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
+            {{ session('mensaje') }}
+        </div>
         @endif
 
         <form wire:submit.prevent="save">
@@ -45,11 +45,11 @@
                 </div>
 
                 @if(!$ocultarContrasenia)
-                    <div>
-                        <label class="block text-sm font-medium">Contraseña</label>
-                        <input type="password" wire:model="contrasenia" class="w-full border border-gray-300 rounded p-2">
-                        @error('contrasenia') <span class="text-red-600 text-sm">{{ $message ?? 'Error no disponible' }}</span> @enderror
-                    </div>
+                <div>
+                    <label class="block text-sm font-medium">Contraseña</label>
+                    <input type="password" wire:model="contrasenia" class="w-full border border-gray-300 rounded p-2">
+                    @error('contrasenia') <span class="text-red-600 text-sm">{{ $message ?? 'Error no disponible' }}</span> @enderror
+                </div>
                 @endif
 
                 <div>
@@ -57,7 +57,7 @@
                     <select wire:change="onRolSeleccionado" wire:model="id_rol" class="w-full border-gray-300 rounded p-2">
                         <option value="">Seleccione un rol</option>
                         @foreach ($roles as $rol)
-                            <option value="{{ $rol->id }}">{{ ucfirst($rol->rol) }}</option>
+                        <option value="{{ $rol->id }}">{{ ucfirst($rol->rol) }}</option>
                         @endforeach
                     </select>
                     @error('id_rol') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
@@ -76,4 +76,15 @@
 
         </form>
     </div>
+    {{-- Mostramos los ultimosUsuariosCreados --}}
+    @if(!empty($ultimosUsuariosCreados))
+    <div class="max-w-3xl mx-auto mt-6 p-4 bg-gray-100 rounded-lg">
+        <h3 class="text-lg font-semibold mb-4">Últimos Usuarios Creados</h3>
+        <ul class="list-disc pl-5">
+            @foreach($ultimosUsuariosCreados as $usuario)
+            <li>{{ $usuario->nombre }} {{ $usuario->apellido }} ({{ $usuario->email }} - Cuenta: {{ $usuario->rol->rol }})</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </div>

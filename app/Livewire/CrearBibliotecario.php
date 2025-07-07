@@ -11,13 +11,14 @@ class CrearBibliotecario extends Component
 {
     public $nombre, $apellido, $CUIL, $domicilio, $telefono, $email, $contrasenia, $id_rol;
     public $ocultarContrasenia = false; // Para ocultar el campo de contraseña si es usuario
+    public $ultimosUsuariosCreados = [];
 
     public function save()
     {
         $this->validate([
             'id_rol' => 'required',
         ]);
-        if($this->id_rol == 3) { //Si es usuario
+        if ($this->id_rol == 3) { //Si es usuario
             $this->contrasenia = "usuario"; // No es obligatorio para usuarios
         }
         $this->validate([
@@ -27,9 +28,9 @@ class CrearBibliotecario extends Component
             'email' => 'required|email|unique:usuarios,email',
             'contrasenia' => 'required|min:5',
             'id_rol' => 'required',
-        ]);        
+        ]);
 
-        Usuario::create([
+        $usuario = Usuario::create([
             'nombre' => $this->nombre,
             'apellido' => $this->apellido,
             'CUIL' => $this->CUIL,
@@ -40,8 +41,20 @@ class CrearBibliotecario extends Component
             'id_rol' => $this->id_rol,
         ]);
 
-        session()->flash('mensaje', 'Bibliotecario creado exitosamente');
-        $this->reset(); // limpia los campos
+        $rol_texto = Rol::find($this->id_rol)->rol ?? '';
+        session()->flash('mensaje', "$rol_texto creado exitosamente");
+        $this->reset([
+            'nombre',
+            'apellido',
+            'CUIL',
+            'domicilio',
+            'telefono',
+            'email',
+            'contrasenia',
+            'id_rol',
+            'ocultarContrasenia'
+        ]); // limpia los campos
+        $this->ultimosUsuariosCreados[] = Usuario::with('rol')->find($usuario->id); // Agrega el usuario recién creado a la lista de últimos usuarios creados
     }
     public function verificarVisibilidadContrasenia()
     {
@@ -51,7 +64,7 @@ class CrearBibliotecario extends Component
             $this->ocultarContrasenia = false; // Para otros roles, mostrar el campo de contraseña
         }
     }
-    public function onRolSeleccionado($value=0)
+    public function onRolSeleccionado($value = 0)
     {
         $this->verificarVisibilidadContrasenia();
     }
@@ -63,14 +76,14 @@ class CrearBibliotecario extends Component
         if (auth()->user()->es_administrador) {
             $rolesDisponibles = Rol::all();
         } else {
-            $rolesDisponibles = Rol::where('rol','Usuario')->get();
+            $rolesDisponibles = Rol::where('rol', 'Usuario')->get();
             $this->id_rol = $rolesDisponibles->first()->id ?? null; // Asigna el primer rol disponible si existe
         }
         $this->verificarVisibilidadContrasenia();
         return view('livewire.crear-bibliotecario', [
             'roles' => $rolesDisponibles,
             'ocultarContrasenia' => $this->ocultarContrasenia,
+            'ultimosUsuariosCreados' => $this->ultimosUsuariosCreados,
         ]);
     }
 }
-
