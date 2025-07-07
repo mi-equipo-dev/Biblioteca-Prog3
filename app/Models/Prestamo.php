@@ -19,6 +19,6 @@ class Prestamo extends Model
     
     public function usuario()
     {
-        return $this->belongsTo(User::class, 'id_usuario'); // Relacion uno a muchos entre prestamos y usuarios (un usuario puede tener muchos prestamos)
+        return $this->belongsTo(Usuario::class, 'id_usuario'); // Relacion uno a muchos entre prestamos y usuarios (un usuario puede tener muchos prestamos)
     }
 }
