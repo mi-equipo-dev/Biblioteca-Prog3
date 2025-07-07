@@ -50,7 +50,12 @@
         </div>
     </div>
 
-    <div class="mt-6">
+        <div class="mt-6 flex justify-between">
+        <a href="{{ route('prestamos.index') }}"
+            class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+            Cancelar
+        </a>
+
         <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
             {{ $submitText }}
         </button>
