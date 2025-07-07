@@ -12,6 +12,8 @@
                     <img src="/images/santiago.png" alt="Santi" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Santi</h3>
                     <p class="text-sm text-gray-700">Omil Santiago Hernán</p>
+                    <h3 class="text-xl font-semibold mt-6">FRONTEND</h3>
+
                 </div>
                 <div class="flip-back absolute inset-0 bg-blue-200 p-6 rounded-lg shadow flex flex-col items-center text-center">
                     <h3 class="text-xl font-semibold">Omil Santiago Hernán</h3>
@@ -27,6 +29,7 @@
                     <img src="/images/fabri.png" alt="Fabri" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Fabri</h3>
                     <p class="text-sm text-gray-700">Nuñez Fabricio Lautaro</p>
+                    <h3 class="text-xl font-semibold mt-6">FRONTEND</h3>
                 </div>
                 <div class="flip-back absolute inset-0 bg-green-200 p-6 rounded-lg shadow flex flex-col items-center text-center">
                     <h3 class="text-xl font-semibold">Nuñez Fabricio Lautaro</h3>
@@ -42,6 +45,7 @@
                     <img src="/images/mayra.png" alt="Mayra" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Mayra</h3>
                     <p class="text-sm text-gray-700">Mendoza Mayra Nahir</p>
+                    <h3 class="text-xl font-semibold mt-6">BACKEND</h3>
                 </div>
                 <div class="flip-back absolute inset-0 bg-pink-200 p-6 rounded-lg shadow flex flex-col items-center text-center">
                     <h3 class="text-xl font-semibold">Mendoza Mayra Nahir</h3>
@@ -57,6 +61,7 @@
                     <img src="/images/olga.png" alt="Olga" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Olga</h3>
                     <p class="text-sm text-gray-700">Gonzalez Olga Mercedes</p>
+                    <h3 class="text-xl font-semibold mt-6">BACKEND</h3>
                 </div>
                 <div class="flip-back absolute inset-0 bg-yellow-200 p-6 rounded-lg shadow flex flex-col items-center text-center">
                     <h3 class="text-xl font-semibold">Gonzalez Olga Mercedes</h3>

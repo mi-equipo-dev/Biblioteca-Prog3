@@ -79,12 +79,30 @@
     {{-- Mostramos los ultimosUsuariosCreados --}}
     @if(!empty($ultimosUsuariosCreados))
     <div class="max-w-3xl mx-auto mt-6 p-4 bg-gray-100 rounded-lg">
-        <h3 class="text-lg font-semibold mb-4">Últimos Usuarios Creados</h3>
-        <ul class="list-disc pl-5">
-            @foreach($ultimosUsuariosCreados as $usuario)
-            <li>{{ $usuario->nombre }} {{ $usuario->apellido }} ({{ $usuario->email }} - Cuenta: {{ $usuario->rol->rol }})</li>
-            @endforeach
-        </ul>
-    </div>
+        <h3 class="text-lg font-semibold mb-4">ÚLTIMOS USUARIOS CARGADOS</h3>
+        <table class="min-w-full table-auto border border-gray-200">
+        <thead class="bg-blue-100">
+            <tr>
+                <th class="px-4 py-2 text-left">Nombre</th>
+                <th class="px-4 py-2 text-left">Apellido</th>
+                <th class="px-4 py-2 text-left">CUIL</th>
+                <th class="px-4 py-2 text-left">Email</th>
+                <th class="px-4 py-2 text-center">Rol</th>
+            </tr>
+        </thead>
+        {{-- TABLA PARA MOSTAR LOS ÚLTIMOS CARGADOS --}}    
+        <tbody>
+                @foreach($ultimosUsuariosCreados as $usuario)
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-4 py-2">{{ $usuario->nombre }}</td>
+                        <td class="px-4 py-2">{{ $usuario->apellido }}</td>
+                        <td class="px-4 py-2">{{ $usuario->CUIL }}</td>
+                        <td class="px-4 py-2">{{ $usuario->email }}</td>
+                        <td class="px-4 py-2">{{ $usuario->rol->rol }}</td>
+                    </tr>
+                    @endforeach
+            </tbody>
+        </table>
+    </div>    
     @endif
 </div>
