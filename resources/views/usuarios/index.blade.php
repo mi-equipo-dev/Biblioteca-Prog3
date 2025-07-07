@@ -5,7 +5,7 @@
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold">Usuarios</h2>
         <a href="{{ route('usuarios.create') }}"
-           class="inline-flex items-center px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+            class="inline-flex items-center px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
             <span class="text-xl mr-1">+</span> Nuevo Usuario
         </a>
     </div>
@@ -30,13 +30,36 @@
                     <td class="px-4 py-2">{{ $usuario->email }}</td>
                     <td class="px-4 py-2 text-center">
                         <a href="{{ route('usuarios.edit', $usuario->id) }}"
-                           class="text-blue-600 hover:underline mr-3">Editar</a>
-                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" class="inline">
+                            class="text-blue-600 hover:underline mr-3">Editar</a>
+                        <button type="button" onclick="confirmarEliminacionUsuario({{ $usuario->id }}, '{{ $usuario->nombre }} {{ $usuario->apellido }}', '{{ $usuario->email }}')"
+                            class="text-red-600 hover:underline">Borrar</button>
+
+                        <form id="form-eliminar-usuario-{{ $usuario->id }}" action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" class="hidden">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('¿Estás seguro de que querés borrar este usuario?')"
-                                    class="text-red-600 hover:underline">Borrar</button>
                         </form>
+
+                        @push('scripts')
+                        <script>
+                            function confirmarEliminacionUsuario(id, nombreCompleto, email) {
+                                Swal.fire({
+                                    title: '¿Eliminar usuario?',
+                                    html: `<strong>Nombre:</strong> ${nombreCompleto}<br><strong>Email:</strong> ${email}`,
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#e3342f',
+                                    cancelButtonColor: '#6c757d',
+                                    confirmButtonText: 'Sí, borrar',
+                                    cancelButtonText: 'Cancelar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        document.getElementById(`form-eliminar-usuario-${id}`).submit();
+                                    }
+                                });
+                            }
+                        </script>
+                        @endpush
+
                     </td>
                 </tr>
                 @empty
@@ -49,4 +72,3 @@
     </div>
 </div>
 @endsection
-

@@ -5,7 +5,7 @@
     <div class="flex items-center justify-between mb-4">
         <h2 class="text-2xl font-bold">Préstamos</h2>
         <a href="{{ route('prestamos.create') }}"
-           class="inline-flex items-center px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+            class="inline-flex items-center px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
             <span class="text-xl mr-1">+</span> Nuevo Préstamo
         </a>
     </div>
@@ -34,13 +34,36 @@
                     </td>
                     <td class="px-4 py-2 text-center">
                         <a href="{{ route('prestamos.edit', $prestamo->id) }}"
-                           class="text-blue-600 hover:underline mr-3">Editar</a>
-                        <form action="{{ route('prestamos.destroy', $prestamo->id) }}" method="POST" class="inline">
+                            class="text-blue-600 hover:underline mr-3">Editar</a>
+                        <button type="button" onclick="confirmarEliminacion({{ $prestamo->id }}, '{{ $prestamo->usuario->nombre }} {{ $prestamo->usuario->apellido }}', '{{ $prestamo->libro->titulo }}')"
+                            class="text-red-600 hover:underline">Borrar</button>
+
+                        <form id="form-eliminar-{{ $prestamo->id }}" action="{{ route('prestamos.destroy', $prestamo->id) }}" method="POST" class="hidden">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('¿Borrar este préstamo?')"
-                                    class="text-red-600 hover:underline">Borrar</button>
                         </form>
+
+                        @push('scripts')
+                        <script>
+                            function confirmarEliminacion(id, usuario, libro) {
+                                Swal.fire({
+                                    title: '¿Eliminar préstamo?',
+                                    html: `<strong>Usuario:</strong> ${usuario}<br><strong>Libro:</strong> ${libro}`,
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#e3342f',
+                                    cancelButtonColor: '#6c757d',
+                                    confirmButtonText: 'Sí, borrar',
+                                    cancelButtonText: 'Cancelar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        document.getElementById(`form-eliminar-${id}`).submit();
+                                    }
+                                });
+                            }
+                        </script>
+                        @endpush
+
                     </td>
                 </tr>
                 @empty
@@ -53,4 +76,3 @@
     </div>
 </div>
 @endsection
-
