@@ -9,7 +9,7 @@
         <div class="flip-card">
             <div class="flip-inner relative min-h-[280px]">
                 <div class="flip-front absolute inset-0 bg-blue-100 p-6 rounded-lg shadow flex flex-col items-center text-center">
-                    <img src="/images/santi.png" alt="Santi" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
+                    <img src="/images/santiago.png" alt="Santi" class="w-20 h-20 rounded-full mb-2 object-cover aspect-square">
                     <h3 class="text-xl font-semibold">Santi</h3>
                     <p class="text-sm text-gray-700">Omil Santiago Hernán</p>
                 </div>
