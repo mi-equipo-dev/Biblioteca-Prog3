@@ -1,6 +1,6 @@
 <div>
     <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
-        <h2 class="text-2xl font-semibold mb-6">Crear Bibliotecario</h2>
+        <h2 class="text-2xl font-semibold mb-6">Crear Usuario</h2>
 
         @if (session()->has('mensaje'))
             <div class="mb-4 p-4 bg-green-100 text-green-700 rounded">
@@ -61,12 +61,17 @@
                     @error('id_rol') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
                 </div>
             </div>
+            <div class="mt-6 flex justify-between">
+                <a href="{{ route('usuarios.index') }}"
+                    class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+                    Cancelar
+                </a>
 
-            <div class="mt-6">
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    Crear Bibliotecario
+                    Crear Usuario
                 </button>
             </div>
+
         </form>
     </div>
 </div>
