@@ -53,7 +53,9 @@ Route::get('/equipo', function () {
     return view('presentacion.equipo');
 });
 
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 
 

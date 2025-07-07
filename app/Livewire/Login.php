@@ -24,7 +24,7 @@ class Login extends Component
 
         session()->regenerate();
 
-        return redirect()->route('welcome');
+        return redirect()->route('dashboard');
     }
 
     public function render()

@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate(); // Protege contra session fixation
 
-        return redirect()->route('welcome');
+        return redirect()->route('dashboard');
     }
 
     public function Logout(Request $request)
