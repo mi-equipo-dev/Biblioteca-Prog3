@@ -44,15 +44,17 @@
                     @error('email') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium">Contraseña</label>
-                    <input type="password" wire:model="contrasenia" class="w-full border border-gray-300 rounded p-2">
-                    @error('contrasenia') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-                </div>
+                @if(!$ocultarContrasenia)
+                    <div>
+                        <label class="block text-sm font-medium">Contraseña</label>
+                        <input type="password" wire:model="contrasenia" class="w-full border border-gray-300 rounded p-2">
+                        @error('contrasenia') <span class="text-red-600 text-sm">{{ $message ?? 'Error no disponible' }}</span> @enderror
+                    </div>
+                @endif
 
                 <div>
                     <label class="block text-sm font-medium">Rol</label>
-                    <select wire:model="id_rol" class="w-full border-gray-300 rounded p-2">
+                    <select wire:change="onRolSeleccionado" wire:model="id_rol" class="w-full border-gray-300 rounded p-2">
                         <option value="">Seleccione un rol</option>
                         @foreach ($roles as $rol)
                             <option value="{{ $rol->id }}">{{ ucfirst($rol->rol) }}</option>
