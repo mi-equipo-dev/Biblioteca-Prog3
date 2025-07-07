@@ -12,6 +12,10 @@ class Prestamo extends Model
         'id_libro',
         'id_usuario',
     ];
+    protected $casts = [
+        'fecha_prestamo' => 'datetime',
+        'fecha_devolucion' => 'datetime',
+    ]; // Define los tipos de datos para las fechas
     public function libro()
     {
         return $this->belongsTo(Libro::class, 'id_libro'); // Relacion uno a muchos entre prestamos y libros (un libro puede tener muchos prestamos)
