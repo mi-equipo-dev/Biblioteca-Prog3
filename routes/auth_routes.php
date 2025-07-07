@@ -7,11 +7,15 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 // Login
-Route::post('/login', [AuthController::class, 'Login'])->name('login');
-Route::get("/login", [AuthController::class, 'LoginForm' ])->name("loginForm");
+Route::middleware(['guest'])->group(function () {
+    Route::post('/login', [AuthController::class, 'Login'])->name('login');
+    Route::get("/login", [AuthController::class, 'LoginForm' ])->name("loginForm");
+});
 
 // Logout
-Route::post('/logout', [AuthController::class, 'Logout'])->name('logout');
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'Logout'])->name('logout');
+});
 
 // Ejemplo de Ruta protegida
 // Route::middleware('auth')->get('/usuario', function (Request $request) {

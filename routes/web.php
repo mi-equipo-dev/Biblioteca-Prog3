@@ -15,45 +15,47 @@ Route::get('/', function () {
 })->name('welcome');
 
 // Rutas para ROLES
-Route::get('/roles', [RolController::class, 'index'])->name('roles.index');
-Route::post('/roles', [RolController::class, 'store'])->name('roles.store');
-Route::get('/roles/crear', [RolController::class, 'create'])->name('roles.create');
-Route::get("/roles/{id}",[RolController::class,'show'])->name('roles.show');
-Route::get("/roles/{id}/editar",[RolController::class,'edit'])->name('roles.edit');
-Route::put("/roles/{id}",[RolController::class,'update'])->name('roles.update');
-Route::delete("/roles/{id}",[RolController::class,'delete'])->name('roles.delete');
-Route::resource('usuarios', UsuarioController::class); //añadido front
-Route::get('/bibliotecario/crear', function () {
-    return view('usuarios.create');
+Route::middleware(['auth'])->group(function (){
+    Route::get('/roles', [RolController::class, 'index'])->name('roles.index');
+    Route::post('/roles', [RolController::class, 'store'])->name('roles.store');
+    Route::get('/roles/crear', [RolController::class, 'create'])->name('roles.create');
+    Route::get("/roles/{id}",[RolController::class,'show'])->name('roles.show');
+    Route::get("/roles/{id}/editar",[RolController::class,'edit'])->name('roles.edit');
+    Route::put("/roles/{id}",[RolController::class,'update'])->name('roles.update');
+    Route::delete("/roles/{id}",[RolController::class,'delete'])->name('roles.delete');
+    Route::resource('usuarios', UsuarioController::class); //añadido front
+    Route::get('/bibliotecario/crear', function () {
+        return view('usuarios.create');
+    });
 });
 
 
 // Rutas para CATEGORÍAS
-Route::resource('categorias', CategoriaController::class);
+Route::middleware(['auth'])->resource('categorias', CategoriaController::class);
 
 //Rutas para PROCEDENCIAS
-Route::resource('procedencias', ProcedenciaController::class);
+Route::middleware(['auth'])->resource('procedencias', ProcedenciaController::class);
 
 // Rutas para DESTINOS
-Route::resource('destinos', DestinoController::class);
+Route::middleware(['auth'])->resource('destinos', DestinoController::class);
 
 // Rutas para LIBROS
-Route::resource('libros', LibroController::class);
+Route::middleware(['auth'])->resource('libros', LibroController::class);
 
 // Rutas para USUARIOS
-Route::resource('usuarios', UsuarioController::class);
+Route::middleware(['auth'])->resource('usuarios', UsuarioController::class);
 
 // Rutas para PRESTAMOS
-Route::resource('prestamos', PrestamoController::class);
+Route::middleware(['auth'])->resource('prestamos', PrestamoController::class);
 
 // Búsqueda por CUIL (extra)
-Route::get('prestamos/buscar-cuil', [PrestamoController::class, 'buscarPorCuil'])->name('prestamos.buscarCuil');
+Route::middleware('auth')->get('prestamos/buscar-cuil', [PrestamoController::class, 'buscarPorCuil'])->name('prestamos.buscarCuil');
 
 Route::get('/equipo', function () {
     return view('presentacion.equipo');
 });
 
-Route::get('/dashboard', function () {
+Route::middleware(['auth'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
