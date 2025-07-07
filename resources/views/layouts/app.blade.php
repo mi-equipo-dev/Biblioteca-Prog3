@@ -47,12 +47,10 @@
                 @auth
                 @php
                 $route = request()->route()->getName(); // ej: usuarios.index
-                $enDashboard = str_starts_with($route, 'dashboard') || in_array($route, [
-                'usuarios.index', 'libros.index', 'prestamos.index'
-                ]);
+
                 @endphp
 
-                @if ($enDashboard)
+
                 <div class="flex gap-3 items-center mr-4">
                     @if ($route !== 'dashboard')
                     <a href="{{ route('dashboard') }}"
@@ -79,7 +77,6 @@
                     </a>
                     @endif
                 </div>
-                @endif
 
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf

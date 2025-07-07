@@ -37,7 +37,7 @@ class LibroController extends Controller
     {
         // Valida los datos del formulario
         $validated = $request->validate([
-            'ISBN' => 'required|string|min:1|max:13|unique:libros,ISBN',
+            'ISBN' => 'required|string|min:1|max:25|unique:libros,ISBN',
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'editorial' => 'required|string|max:255',
@@ -45,7 +45,6 @@ class LibroController extends Controller
             'cantidad' => 'required|integer|min:1',
             'id_categoria' => 'required|exists:categorias,id',
             'id_procedencia' => 'required|exists:procedencias,id',
-            'id_destino' => 'required|exists:destinos,id',
         ]);
         Libro::create($validated);// Crea un nuevo libro con los datos validados
         return redirect()->route('libros.index')->with('success', 'Libro creado exitosamente.');// Redirige a la lista de libros con un mensaje de éxito
@@ -81,7 +80,7 @@ class LibroController extends Controller
         $libro = Libro::findOrFail($id);
 
         $validated = $request->validate([
-            'ISBN' => 'required|string|min:1|max:13|unique:libros,ISBN,' . $libro->id,
+            'ISBN' => 'required|string|min:1|max:25|unique:libros,ISBN,' . $libro->id,
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'editorial' => 'required|string|max:255',
@@ -89,7 +88,6 @@ class LibroController extends Controller
             'cantidad' => 'required|integer|min:0',
             'id_categoria' => 'required|exists:categorias,id',
             'id_procedencia' => 'required|exists:procedencias,id',
-            'id_destino' => 'required|exists:destinos,id',
         ]);
 
         $libro->update($validated);// Actualiza el libro con los datos validados
